@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Subsets {
+    /**
+     * 78. Subsets
+     * https://leetcode.com/problems/subsets/
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length == 0) {
