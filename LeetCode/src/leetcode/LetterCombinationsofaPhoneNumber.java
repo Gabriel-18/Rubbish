@@ -7,6 +7,7 @@ import java.util.List;
  * https://leetcode.com/problems/letter-combinations-of-a-phone-number/solution/
  */
 public class LetterCombinationsofaPhoneNumber {
+    // 建立映射表
     private String letterMap[] = {
             " ",
             "",
@@ -19,6 +20,7 @@ public class LetterCombinationsofaPhoneNumber {
             "tuv",
             "wxyz"
     };
+    // 保存结果
     private ArrayList<String> res;
 
     public List<String> letterCombinations(String digits) {
