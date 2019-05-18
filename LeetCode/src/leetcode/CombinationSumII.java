@@ -38,6 +38,7 @@ public class CombinationSumII {
                 continue;
             }
             list.add(candidates[i]);
+            // 不可以重复从i+!开始
             helper(res, list, candidates, target - candidates[i], i + 1);
             list.remove(list.size() - 1);
         }
