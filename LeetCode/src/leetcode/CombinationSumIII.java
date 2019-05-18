@@ -23,6 +23,7 @@ public class CombinationSumIII {
         if (n < 0 || k < 0) {
             return;
         }
+        // 终止条件
         if (n == 0 && k == 0) {
             res.add(new ArrayList<>(list));
             return;
@@ -30,6 +31,7 @@ public class CombinationSumIII {
 
         for (int i = start; i <= 9; i++) {
             list.add(i);
+            // 不能重复所以i+1
             helper(res, list, k - 1, n - i, i + 1);
             list.remove(list.size() - 1);
         }
