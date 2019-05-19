@@ -7,8 +7,9 @@ public class ReverseLinkedList {
      */
     public ListNode reverseList(ListNode head) {
         ListNode newNode = null;
+        ListNode next = null;
         while (head != null) {
-            ListNode next = head.next;
+            next = head.next;
             head.next = newNode;
             newNode = head;
             head = next;
