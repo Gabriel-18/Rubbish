@@ -4,6 +4,7 @@ public class DiameterofBinaryTree {
     /**
      * 543. Diameter of Binary Tree
      * https://leetcode.com/problems/diameter-of-binary-tree/
+     * 自底向上
      */
     private int max = 0;
     public int diameterOfBinaryTree(TreeNode root) {
