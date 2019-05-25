@@ -26,16 +26,19 @@ public class MergeTwoBinaryTrees {
      * @return
      */
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        // 递归出口
+        if (t1 == null && t2 == null) {
+            return null;
+        }
         if (t1 == null ) {
             return t2;
         }
         if (t2 == null) {
             return t1;
         }
-        //TreeNode root = new TreeNode(t1.val + t2.val);
-        TreeNode root = t1;
-        root.val = t1.val + t2.val;
-                //new TreeNode(t1.val + t2.val);
+        // 求和
+        TreeNode root = new TreeNode(t1.val + t2.val);
+        //继续递归
         root.left = mergeTrees(t1.left , t2.left);
         root.right = mergeTrees(t1.right,t2.right);
         return root;
