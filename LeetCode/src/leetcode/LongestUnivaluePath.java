@@ -25,7 +25,9 @@ public class LongestUnivaluePath {
         int leafPath = root.left != null && root.left.val == root.val ? left + 1: 0;
         int rightPath = root.right != null && root.right.val == root.val ? right + 1: 0;
 
+        //某个点的最大情况
         path = Math.max(path, leafPath + rightPath);
+        // 向上只能返回单边最大
         return Math.max(leafPath, rightPath);
 
     }
