@@ -16,4 +16,17 @@ public class ReverseLinkedList {
         }
         return newNode;
     }
+
+    public ListNode reverseList2(ListNode head) {
+        // 终止条件
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode next = head.next;
+        ListNode newHead = reverseList2(next);
+
+        newHead.next = head;
+        head.next = null;
+        return newHead;
+    }
 }
