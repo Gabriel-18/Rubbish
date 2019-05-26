@@ -5,6 +5,7 @@ public class SubtreeofAnotherTree {
      * 572. Subtree of Another Tree
      * https://leetcode.com/problems/subtree-of-another-tree/description/
      * 思路和437差不多
+     * 和101辅助函数几乎一样
      * @param s
      * @param t
      * @return
