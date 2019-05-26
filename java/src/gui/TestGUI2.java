@@ -20,16 +20,19 @@ public class TestGUI2 {
         l.setBounds(50, 50, i.getIconWidth(), i.getIconHeight());
 
         f.addKeyListener(new KeyListener() {
+            // 一个弹起的组合动作
             @Override
             public void keyTyped(KeyEvent e) {
 
             }
 
+            // 键被按下
             @Override
             public void keyPressed(KeyEvent e) {
 
             }
 
+            // 键被弹起
             @Override
             public void keyReleased(KeyEvent e) {
                 // 39代表右移
