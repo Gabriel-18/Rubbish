@@ -20,15 +20,17 @@ public class KruskalMST extends MST{
         UF uf = new QuickFindUF(graph.getV());
 
         while (!pq.isEmpty() && mst.size() < graph.getV() - 1) {
+            // 从pq得到权重最小的边和它的顶点
             Edge edge = pq.poll();
 
             int v = edge.getV(), w = edge.getW();
-
+            // 忽略失效的边
             if (uf.connected(v, w)) {
                 continue;
             }
-
+            // 合并分量
             uf.connected(v, w);
+            // 添加到最小生成树中
             mst.add(edge);
         }
 
