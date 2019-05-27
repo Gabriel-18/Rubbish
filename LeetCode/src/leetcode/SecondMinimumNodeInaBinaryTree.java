@@ -13,6 +13,7 @@ public class SecondMinimumNodeInaBinaryTree {
             return -1;
         }
 
+
         if (root.left == null && root.right == null) {
             return -1;
         }
