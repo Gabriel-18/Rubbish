@@ -3,7 +3,7 @@ package graph;
 import java.util.HashSet;
 import java.util.Set;
 
-public class EdgeWeightGraph {
+public class EdgeWeighGraph {
     /**
      * 顶点总数
      */
@@ -13,7 +13,7 @@ public class EdgeWeightGraph {
      */
     private Set<Edge>[] adj;
 
-    public EdgeWeightGraph(int v) {
+    public EdgeWeighGraph(int v) {
         this.v = v;
         adj = new Set[v];
         for (int i = 0; i < v; i++) {
