@@ -3,9 +3,9 @@ package graph;
 import java.util.Set;
 
 public abstract class MST {
-    protected EdgeWeightGraph graph;
+    protected EdgeWeighGraph graph;
 
-    public MST(EdgeWeightGraph graph) {
+    public MST(EdgeWeighGraph graph) {
         this.graph = graph;
     }
 
