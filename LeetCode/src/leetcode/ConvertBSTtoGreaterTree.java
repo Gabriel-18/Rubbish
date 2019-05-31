@@ -4,7 +4,7 @@ public class ConvertBSTtoGreaterTree {
     /***
      * 538. Convert BST to Greater Tree
      * https://leetcode.com/problems/convert-bst-to-greater-tree/
-     * 题目描述不是很清楚
+     * BST的性质 右子树大于根节点
      * @param root
      * @return
      */
@@ -15,6 +15,7 @@ public class ConvertBSTtoGreaterTree {
     }
 
     private void traver(TreeNode node) {
+        // 向上返回
         if (node == null) {
             return;
         }
@@ -22,6 +23,7 @@ public class ConvertBSTtoGreaterTree {
         traver(node.right);
         sum += node.val;
         node.val = sum;
+
         traver(node.left);
     }
 }
