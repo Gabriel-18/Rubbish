@@ -54,4 +54,16 @@ public class TwoSum {
         }
         return res;
     }
+
+    public int[] twoSum2(int[] nums, int target) {
+        HashMap<Integer, Integer> indexForNum = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (indexForNum.containsKey(target - nums[i])) {
+                return new int[] {};
+            } else {
+                indexForNum.put(nums[i],i );
+            }
+        }
+        return null;
+    }
 }
