@@ -32,6 +32,7 @@ public class LongestConsecutiveSequence {
         return max;
     }
 
+    // union-find???
     private int forward(HashMap<Integer, Integer> countForNum, int num) {
         if (!countForNum.containsKey(num)) {
             return 0;
