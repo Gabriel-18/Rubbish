@@ -4,6 +4,7 @@ public class KthSmallestElementinaSortedMatrix {
     /**
      * https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
      * 378. Kth Smallest Element in a Sorted Matrix
+     * 二分法的变形
      * @param matrix
      * @param k
      * @return
@@ -12,6 +13,7 @@ public class KthSmallestElementinaSortedMatrix {
         int m = matrix.length, n = matrix[0].length;
         int lo = matrix[0][0], hi = matrix[m - 1][n - 1];
         while (lo <= hi) {
+            // 找不到就更新
             int mid = lo + (hi - lo) / 2;
             int cnt = 0;
             for (int i =0; i < m; i++) {
@@ -19,6 +21,7 @@ public class KthSmallestElementinaSortedMatrix {
                     cnt++;
                 }
             }
+            // 更新边界
             if (cnt < k) {
                 lo = mid + 1;
             } else {
