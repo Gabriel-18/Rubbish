@@ -2,6 +2,11 @@ package sorting.insertion;
 
 import sorting.Sort;
 
+/**
+ * Running time insensitive to input. Quadratic time, even if input is sorted.
+ * Data movement is minimal. Linear number of exchanges.
+ * @param <T>
+ */
 public class Insertion<T extends Comparable<T>> extends Sort<T> {
 
     @Override
@@ -16,6 +21,19 @@ public class Insertion<T extends Comparable<T>> extends Sort<T> {
         }
     }
 
+    public void sort1(T[] a) {
+        int N = a.length;
+        for (int i = 0; i < N; i++) {
+            int min = i;
+            for (int j = i + 1; j < N; j++) {
+                if (less(a[j],a[min])) {
+                    min = j;
+                }
+            }
+            swap(a, i, min);
+        }
+    }
+
     public static void main(String[] args) {
         Integer[] a = {2,1,2,33,44};
         for (Integer integer : a) {
@@ -23,7 +41,7 @@ public class Insertion<T extends Comparable<T>> extends Sort<T> {
         }
         System.out.println("===============");
         Insertion<Integer> integerInsertion = new Insertion<>();
-        integerInsertion.sort(a);
+        integerInsertion.sort1(a);
         for (Integer integer : a) {
             System.out.println(integer);
         }
