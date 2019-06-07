@@ -4,6 +4,7 @@ public class FindtheDuplicateNumber {
     /**
      * https://leetcode.com/problems/find-the-duplicate-number/description/
      * 287. Find the Duplicate Number
+     * 整个数组中如果小于等于 n/2 的数的数量大于 n/2，说明 1 到 n/2 这个区间是肯定有重复数字的
      * 我们比较的 mid 而不是 nums[mid]
      * 因为 mid 是下标，所以判断式应为 cnt > mid，最后返回 min
      * @param nums
