@@ -8,7 +8,7 @@ public class MinimumPathSum {
      * @param grid
      * @return
      */
-    public int minPathSum(int[][] grbid) {
+    public int minPathSum(int[][] grid) {
         if (grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
