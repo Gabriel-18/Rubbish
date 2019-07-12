@@ -27,5 +27,11 @@ public class Base7 {
 
         // recover its operator if it is a negative
         return isNegative ? "-" + ret : ret;
+
+
+        //还有个更快的方法
+        //   Returns a string representation of the first argument in the
+        //   radix specified by the second argument.
+        //return Integer.toString(num, 7);
     }
 }
