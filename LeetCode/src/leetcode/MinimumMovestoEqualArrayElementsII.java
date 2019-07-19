@@ -47,7 +47,7 @@ public class MinimumMovestoEqualArrayElementsII {
     private int findKthSmallest(int[] nums, int k) {
         int l = 0, h = nums.length - 1;
         while (l < h) {
-            int j = partition(nums, 1, h);
+            int j = partition(nums, l, h);
             if (j == k) {
                 break;
             }
@@ -56,7 +56,6 @@ public class MinimumMovestoEqualArrayElementsII {
             } else {
                 h = j - 1;
             }
-
         }
         return nums[k];
     }
