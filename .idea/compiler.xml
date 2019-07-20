@@ -4,9 +4,19 @@
     <option name="BUILD_PROCESS_HEAP_SIZE" value="1024" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Algorithm" />
+        <module name="SpringIOC" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Algorithm" target="1.8" />
+      <module name="database" target="1.8" />
+      <module name="SpringIOC" target="1.5" />
+      <module name="Student_Management_System" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

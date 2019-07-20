@@ -2,7 +2,8 @@
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/Algorithm" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Student_Management_System/src/stud.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Student_Management_System/src/main/java/stud.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/database" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java/src/gui/JDialogTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/java/src/gui/TestGUI.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/java/src/gui/TestGUI2.java" charset="GBK" />

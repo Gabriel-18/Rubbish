@@ -1,3 +1,0 @@
-Student: name='2', id='2', Chinese=2, Math=2, total=4
-Student: name='li', id='2', Chinese=0, Math=1, total=1
-Student: name='lisi', id='1', Chinese=1, Math=1, total=2
