@@ -1,4 +1,4 @@
-package com.example.database;
+package com.example.database.dao;
 
 import com.example.database.model.User;
 import org.apache.ibatis.annotations.Insert;
@@ -17,4 +17,7 @@ public interface userDao {
 
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
     User selectById(int id);
+
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where name=#{name}"})
+    User selectByName(String name);
 }

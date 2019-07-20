@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <!-- head标签中包含的信息无需改动 -->
 <head>
@@ -94,7 +94,7 @@
 <body>
 
     <!-- 顶部导航栏，无需改动 -->
-    <h1>服务器平台后台考核-学生信息管理</h1>
+    <h1>学生信息管理</h1>
 
     <!-- 左侧导航栏，需要在合适的li标签上添加上 class="active" 字段，四个中只能选一个添加 -->
     <nav>
@@ -191,7 +191,7 @@
                     <tbody>
                         <tr>
                             <td>a</td>
-                            <td>a</td>
+                            <td th:text="p">a</td>
 							<td>a</td>
                             <td>a</td>
                             <td>a</td>
