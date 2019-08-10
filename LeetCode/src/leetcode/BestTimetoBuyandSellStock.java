@@ -6,22 +6,29 @@ package leetcode;
  */
 public class BestTimetoBuyandSellStock {
     public int maxProfit(int[] prices) {
+        // 边界处理
         if (prices == null || prices.length < 2) {
             return 0;
         }
+        // 假设第一次为最低价
         int min = prices[0];
+        // 此时收益为0
         int profit = 0;
 
         for (int price : prices) {
+            // 当前价格与之前的最小价格比较
             min = Math.min(min, price);
+            // 计算当前收益 并 与之前的最大收益比较
             profit = Math.max(profit, price - min);
         }
+        // 返回收益
         return profit;
     }
 
     /**
      * 选出最小价格
      * 出售比较收益
+     * 感觉思路差不多
      * @param prices
      * @return
      */
