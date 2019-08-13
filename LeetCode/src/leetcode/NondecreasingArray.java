@@ -9,7 +9,7 @@ public class NondecreasingArray {
      */
     public boolean checkPossibility(int[] nums) {
         int cnt = 0;
-        for (int i = 0; i < nums.length && cnt < 2; i++) {
+        for (int i = 1; i < nums.length && cnt < 2; i++) {
             // 符合题目要求 跳过这种情况 继续执行
             if (nums[i] >= nums[i - 1]) {
                 continue;
