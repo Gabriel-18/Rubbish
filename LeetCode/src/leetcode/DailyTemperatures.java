@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class DailyTemperatures {
@@ -26,5 +27,27 @@ public class DailyTemperatures {
             indexs.add(curIndex);
         }
         return dist;
+    }
+
+    public  static  int[] dailyTemperatures2(int[] T) {
+        int n = T.length;
+        int[] dist = new int[n];
+        Arrays.fill(dist,-1);
+        Stack<Integer> indexs = new Stack<>();
+        for (int curIndex = 0; curIndex < n; curIndex++) {
+            while (!indexs.isEmpty() && T[curIndex] >= T[indexs.peek()]) {
+                int preIndex = indexs.pop();
+                dist[preIndex] = T[curIndex];
+            }
+            indexs.add(curIndex);
+        }
+        return dist;
+    }
+
+    public static void main(String[] args) {
+        int[] ints = dailyTemperatures2(new int[]{1, 3,5, 2});
+        for (int anInt : ints) {
+            System.out.println(anInt);
+        }
     }
 }

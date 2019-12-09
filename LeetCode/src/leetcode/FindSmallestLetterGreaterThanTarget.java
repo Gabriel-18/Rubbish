@@ -17,4 +17,19 @@ public class FindSmallestLetterGreaterThanTarget {
         }
         return letters[l % letters.length];
     }
+
+
+    public char nextGreatestLetter2(char[] letters, char target) {
+        int l = 0, n = letters.length;
+        int h = n - 1;
+        while (l <= h) {
+            int m = l + (h - l) / 2;
+            if (letters[m] <= target) {
+                l = m + 1;
+            } else  {
+                h = m - 1;
+            }
+        }
+        return l < n ? letters[l] : letters[0];
+    }
 }

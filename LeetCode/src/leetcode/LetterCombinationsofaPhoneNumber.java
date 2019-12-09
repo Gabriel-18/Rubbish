@@ -35,13 +35,16 @@ public class LetterCombinationsofaPhoneNumber {
 
     private void findCombination(String digits, int index, String s) {
         if (index == digits.length()) {
+            // 到达最底层
             res.add(s);
             return;
         }
+        // recursive rule
         Character c = digits.charAt(index);
 
         String letters = letterMap[c - '0'];
         for (int i = 0; i < letters.length(); i ++) {
+            // 下一层
             findCombination(digits, index  + 1, s + letters.charAt(i));
         }
         return;

@@ -14,7 +14,7 @@ public class KthLargestElementinanArray {
      * @return
      */
     public int findKthLargest(int[] nums, int k) {
-        // 小顶堆?
+        // 小顶堆? 堆相关知识 得补一下
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for (int val : nums) {
             pq.add(val);

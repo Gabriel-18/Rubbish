@@ -4,6 +4,20 @@ public class SingleElementinaSortedArray {
     /**
      * https://leetcode.com/problems/single-element-in-a-sorted-array/
      * 540. Single Element in a Sorted Array
+     *
+     *
+     * First we can know that the index of single element must be even
+     *
+     * since the number of elements before the single element is 2*c.
+     *
+     * For the elements to the left of the single element in nums:
+     *
+     * For odd index i, nums[i] = nums[i - 1];
+     * For even inedx i, nums[i] = nums[i + 1];
+     * For example:
+     *
+     *  0  1  2  3  4
+     * [1  1  3  5  5]
      * @param nums
      * @return
      */

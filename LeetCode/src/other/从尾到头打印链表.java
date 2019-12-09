@@ -3,7 +3,7 @@ package other;
 import leetcode.ListNode;
 
 import java.util.ArrayList;
-import java.util.Stack;
+import java.util.LinkedList;
 
 public class 从尾到头打印链表 {
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
@@ -41,7 +41,8 @@ public class 从尾到头打印链表 {
     }
 
     public ArrayList<Integer> printListFromTailToHead3(ListNode listNode) {
-        Stack<Integer> stack = new Stack<>();
+//        Stack<Integer> stack = new Stack<>();
+        LinkedList<Integer> stack = new LinkedList<>();
         while (listNode != null) {
             stack.add(listNode.val);
             listNode = listNode.next;

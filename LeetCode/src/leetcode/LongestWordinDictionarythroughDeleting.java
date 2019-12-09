@@ -26,6 +26,7 @@ public class LongestWordinDictionarythroughDeleting {
                 continue;
             }
 
+
             // 符合字串即替代
             //核心代码
             if (isSubstr(s, target)) {

@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.HashMap;
+
 public class RemoveNthNodeFromEndofList {
     /***
      * https://leetcode.com/problems/remove-nth-node-from-end-of-list/
@@ -11,6 +13,7 @@ public class RemoveNthNodeFromEndofList {
      * @return
      */
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        new HashMap<>()
         ListNode dummy = new ListNode(0);
         ListNode slow = dummy;
         ListNode fast = dummy;
