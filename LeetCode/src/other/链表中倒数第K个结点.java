@@ -15,6 +15,7 @@ public class 链表中倒数第K个结点 {
             node1 = node1.next;
         }
 
+        // 考虑链表长度与倒数k的大小关系
         if (k > 0) {
             return null;
         }
