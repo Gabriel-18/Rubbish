@@ -1,7 +1,14 @@
 package other;
 
 
-
+/**
+ * 设置两个指针
+ * p1 p2 均指向 head
+ * 先让p1走k步
+ * 然后p1 p2 同时行走
+ * 当p1走到链表结尾时
+ * p2 恰好走到倒数k的位置处
+ */
 public class 链表中倒数第K个结点 {
 
     public ListNode FindKthToTail(ListNode head, int k) {
