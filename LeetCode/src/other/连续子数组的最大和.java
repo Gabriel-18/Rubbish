@@ -1,5 +1,8 @@
 package other;
 
+/**
+ * 舔狗算法
+ */
 public class 连续子数组的最大和 {
     public int FindGreatestSumOfSubArray(int[] array) {
         if (array == null || array.length == 0) {
