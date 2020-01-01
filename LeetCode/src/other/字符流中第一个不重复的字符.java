@@ -3,6 +3,13 @@ package other;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 题目要求返回具体的那个字符
+ * 散列统计次数
+ * 用队列来维护这个顺序
+ * 保证队元素不重复
+ * 当队首的元素出现的次数大于1时 就开始执行淘汰策略
+ */
 public class 字符流中第一个不重复的字符 {
     private int[] cnts = new int[256];
     private Queue<Character> queue = new LinkedList<>();
