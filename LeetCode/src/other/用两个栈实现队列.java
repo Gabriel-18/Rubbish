@@ -1,24 +1,27 @@
 package other;
 
 import java.util.Stack;
-
+// 入栈操作全部交给in处理
+// 出栈操作 先判断 out是否为空
+// 当out为空时 就将in里面的元素全部 弹入out
+// 当out出栈出完了 就抛出异常
 public class 用两个栈实现队列 {
-    Stack<Integer> stack1 = new Stack<Integer>();
-    Stack<Integer> stack2 = new Stack<Integer>();
+    Stack<Integer> in = new Stack<Integer>();
+    Stack<Integer> out = new Stack<Integer>();
 
     public void push(int node) {
-        stack1.push(node);
+        in.push(node);
     }
 
     public int pop() throws Exception {
-        if (stack2.isEmpty()) {
-            while (!stack1.isEmpty()) {
-                stack2.push(stack1.pop());
+        if (out.isEmpty()) {
+            while (!in.isEmpty()) {
+                out.push(in.pop());
             }
         }
-        if (stack2.isEmpty()) {
+        if (out.isEmpty()) {
             throw new Exception("queue is empty");
         }
-        return stack2.pop();
+        return out.pop();
     }
 }
