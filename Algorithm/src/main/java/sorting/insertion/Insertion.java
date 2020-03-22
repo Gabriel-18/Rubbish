@@ -34,14 +34,26 @@ public class Insertion<T extends Comparable<T>> extends Sort<T> {
         }
     }
 
+    public void sort2(T[] a) {
+        int N = a.length;
+        for (int i = 0; i < N - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < N; j++) {
+                if (less(a[j],a[min])) {
+                    min = j;
+                }
+            }
+            swap(a, i, min);
+        }
+    }
     public static void main(String[] args) {
-        Integer[] a = {2,1,2,33,44};
+        Integer[] a = {2,1,2,0,33,44};
         for (Integer integer : a) {
             System.out.println(integer);
         }
         System.out.println("===============");
         Insertion<Integer> integerInsertion = new Insertion<>();
-        integerInsertion.sort1(a);
+        integerInsertion.sort2(a);
         for (Integer integer : a) {
             System.out.println(integer);
         }

@@ -2,7 +2,7 @@ package union;
 
 
 public abstract class UF {
-    //父练
+    //父类
     protected int[] id;
     /**
      * 构造一个大小为 N 的并查集

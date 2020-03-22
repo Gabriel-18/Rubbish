@@ -25,6 +25,19 @@ public class Bubble<T extends Comparable<T>> extends Sort<T> {
         }
     }
 
+    public void sort2(T[] nums) {
+        int N = nums.length;
+        boolean hasSorted = false;
+        for (int i = 0; i < N - 1 && !hasSorted; i++) {
+            hasSorted = true;
+            for (int j = 0; j < N - 1 - i; j++) {
+                if (less(nums[j + 1], nums[j])) {
+                    hasSorted = false;
+                    swap(nums, j, j + 1);
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
         Integer[] a = {2,1,2,33,44};
         for (Integer integer : a) {
@@ -32,7 +45,7 @@ public class Bubble<T extends Comparable<T>> extends Sort<T> {
         }
         System.out.println("===============");
         Bubble<Integer> integerBubble = new Bubble<>();
-        integerBubble.sort(a);
+        integerBubble.sort2(a);
         for (Integer integer : a) {
             System.out.println(integer);
         }
