@@ -1,41 +1,36 @@
 package other;
 
 public class 数组中的逆序对 {
-    private long cnt = 0;
     private int[] tmp;  // 在这里声明辅助数组，而不是在 merge() 递归函数中声明
 
     public int InversePairs(int[] nums) {
         tmp = new int[nums.length];
-        mergeSort(nums, 0, nums.length - 1);
-        return (int) (cnt % 1000000007);
+        long res = merge_sort(nums, 0, nums.length - 1);
+        return (int) (res % 1000000007);
     }
 
-    private void mergeSort(int[] nums, int l, int h) {
-        if (h - l < 1)
-            return;
-        int m = l + (h - l) / 2;
-        mergeSort(nums, l, m);
-        mergeSort(nums, m + 1, h);
-        merge(nums, l, m, h);
-    }
 
-    private void merge(int[] nums, int l, int m, int h) {
-        int i = l, j = m + 1, k = l;
-        while (i <= m || j <= h) {
-            if (i > m)
-                tmp[k] = nums[j++];
-            else if (j > h)
-                tmp[k] = nums[i++];
-            else if (nums[i] <= nums[j])
-                tmp[k] = nums[i++];
+    private long merge_sort(int[] nums, int l, int r) {
+        if (l >= r) return 0;
+        int mid = l + (r - l) / 2;
+        long res = merge_sort(nums, l, mid) + merge_sort(nums, mid + 1, r);
+
+        int k = 0, i = l, j = mid + 1;
+        while (i <= mid && j <= r) {
+            if(nums[i] <= nums[j]) tmp[k++] = nums[i++];
             else {
-                tmp[k] = nums[j++];
-                this.cnt += m - i + 1;  // nums[i] > nums[j]，说明 nums[i...mid] 都大于 nums[j]
+                tmp[k++] = nums[j++];
+                res += mid - i + 1;
             }
-            k++;
         }
-        for (k = l; k <= h; k++)
-            nums[k] = tmp[k];
+
+        while (i <= mid) tmp[k++] = nums[i++];
+        while (j <= r) tmp[k++] = nums[j++];
+
+        for (int i1 = l, j1 = 0; i1 <= r ; i1++, j1++) {
+            nums[i1] = tmp[j1];
+        }
+        return res;
     }
 
 }
