@@ -6,6 +6,8 @@ public class 斐波那契数列 {
             return n;
         }
         int[] fib = new int[n + 1];
+        // update
+        fib[1] = 1;
         for (int i = 2; i <= n; i++) {
             fib[i] = fib[i - 1] + fib[i - 2];
         }
