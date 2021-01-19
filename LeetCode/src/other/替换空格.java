@@ -1,13 +1,7 @@
 package other;
 
-import org.junit.Test;
-
 public class 替换空格 {
-    @Test
-    public void test() {
-        StringBuffer stringBuffer = new StringBuffer("A B");
-        replaceSpace(stringBuffer);
-    }
+
     public String replaceSpace(StringBuffer str) {
         int P1 = str.length() - 1;
         for (int i = 0; i <= P1; i++) {
@@ -35,5 +29,30 @@ public class 替换空格 {
      }
 
 
+    public String replaceSpace(String s) {
+        if (s == null || s.length() == 0) return s;
+        StringBuffer sb = new StringBuffer();
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == ' ') {
+                sb.append("%20");
+            } else {
+                sb.append(chars[i]);
+            }
+        }
+        return sb.toString();
+    }
 
+    public String replaceSpace1(StringBuffer str) {
+        StringBuffer sb = new StringBuffer();
+        if (str == null || str.length() == 0) return str.toString();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ' ') {
+                sb.append("%20");
+            } else {
+                sb.append(str.charAt(i));
+            }
+        }
+        return str.toString();
+    }
 }
