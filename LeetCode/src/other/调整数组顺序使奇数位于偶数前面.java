@@ -1,8 +1,8 @@
 package other;
 
 public class 调整数组顺序使奇数位于偶数前面 {
-    public void reOrderArray(int [] array) {
 
+    public void reOrderArray(int [] array) {
         // 奇数个数
         int oddCnt = 0;
         for (int x : array) {

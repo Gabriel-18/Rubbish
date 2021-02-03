@@ -22,8 +22,10 @@ public class 从上往下打印二叉树 {
     }
 
     public static void main(String[] args) {
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        boolean add = queue.add(null);
+//        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+//        boolean add = queue.add(null);
+        String s = "abc";
+        System.out.println(s.substring(0,s.length()));
 
     }
 

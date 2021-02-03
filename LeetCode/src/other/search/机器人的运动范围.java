@@ -14,22 +14,30 @@ public class 机器人的运动范围 {
         this.threshold = threshold;
         initDigitSum();
         boolean[][] marked = new boolean[rows][cols];
+        // 出发点固定了
         dfs(marked, 0, 0);
         return cnt;
     }
 
+    // 搜索
     private void dfs(boolean[][] marked, int r, int c) {
+//        边界
         if (r < 0 || r >= rows || c < 0 || c >= cols || marked[r][c])
             return;
+//        标记
         marked[r][c] = true;
 //        if (this.digitSum[r][c] > this.threshold)
+        // 不符合题意
         if (check(r) + check(c) > this.threshold)
             return;
+        // 步数加1
         cnt++;
+        // 搜索
         for (int[] n : next)
             dfs(marked, r + n[0], c + n[1]);
     }
 
+    // 算下前缀和
     private int check(int n) {
         int sum = 0;
         while (n > 0) {
