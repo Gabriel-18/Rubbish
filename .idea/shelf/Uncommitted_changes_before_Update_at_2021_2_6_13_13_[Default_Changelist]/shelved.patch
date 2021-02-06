@@ -1,0 +1,892 @@
+Index: LeetCode/src/leetcode/TreeNode.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package leetcode;\r\n/**\r\n * Definition for a binary tree node.\r\n */\r\n\r\npublic class TreeNode {\r\n    int val;\r\n    TreeNode left;\r\n    TreeNode right;\r\n    TreeNode(int x) { val = x; }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/leetcode/TreeNode.java	(revision 3e8c68b18bdcc5b3a8adf3b66e56bc14f61e8130)
++++ LeetCode/src/leetcode/TreeNode.java	(date 1612546831180)
+@@ -4,8 +4,8 @@
+  */
+ 
+ public class TreeNode {
+-    int val;
+-    TreeNode left;
+-    TreeNode right;
+-    TreeNode(int x) { val = x; }
++    public int val;
++    public TreeNode left;
++    public TreeNode right;
++    public TreeNode(int x) { val = x; }
+ }
+Index: LeetCode/src/leetcode/LongestSubstringWithoutRepeatingCharacters.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package leetcode;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.HashSet;\r\n\r\npublic class LongestSubstringWithoutRepeatingCharacters {\r\n    /**\r\n\r\n     Given a string, find the length of the longest substring without repeating characters.\r\n\r\n     Example 1:\r\n\r\n     Input: \"abcabcbb\"\r\n     Output: 3\r\n     Explanation: The answer is \"abc\", with the length of 3.\r\n     Example 2:\r\n\r\n     Input: \"bbbbb\"\r\n     Output: 1\r\n     Explanation: The answer is \"b\", with the length of 1.\r\n     Example 3:\r\n\r\n     Input: \"pwwkew\"\r\n     Output: 3\r\n     Explanation: The answer is \"wke\", with the length of 3.\r\n     Note that the answer must be a substring, \"pwke\" is a subsequence and not a substring.\r\n      time : O(n)\r\n      space : O(n)\r\n     * @param s\r\n     * @return\r\n     */\r\n    public int lengthOfLongestSubstring(String s) {\r\n        if (s == null || s.length() == 0) {\r\n            return 0;\r\n        }\r\n        int res = 0;\r\n        HashMap<Character, Integer> map = new HashMap<>();\r\n        for (int i = 0, j = 0; i < s.length(); i++) {\r\n            if (map.containsKey(s.charAt(i))) {\r\n                // update the index of new character\r\n                j = Math.max(j, map.get(s.charAt(i)) + 1);\r\n            }\r\n            // put\r\n            map.put(s.charAt(i), i);\r\n            // update res if res < i - j + 1\r\n            res = Math.max(res, i - j + 1);\r\n        }\r\n        return res;\r\n    }\r\n\r\n    /**\r\n     * wrong\r\n     * @param s\r\n     * @return\r\n     */\r\n    public int lengthOfLongestSubstring2(String s) {\r\n        if (s == null || s.length() == 0) {\r\n            return 0;\r\n        }\r\n        HashSet<Character> set = new HashSet<>();\r\n        int res = 0;\r\n\r\n        for (int i = 0, j = 0; i < s.length(); i ++) {\r\n\r\n            //if (set.contains(s.charAt(i))) {\r\n            //    set.remove(s.charAt(j ++));\r\n            //} else {\r\n            //    set.add(s.charAt(i));\r\n            //    res = Math.max(res, set.size());\r\n            //}\r\n\r\n            if (set.contains(s.charAt(i))) {\r\n                j = i;\r\n                j ++;\r\n            } else {\r\n                set.add(s.charAt(i));\r\n                res = Math.max(res, set.size());\r\n            }\r\n        }\r\n        return res;\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        LongestSubstringWithoutRepeatingCharacters longestSubstringWithoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();\r\n        int aab = longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring2(\"aab\");\r\n        System.out.println(aab);\r\n    }\r\n}\r\n
+===================================================================
+--- LeetCode/src/leetcode/LongestSubstringWithoutRepeatingCharacters.java	(revision 3e8c68b18bdcc5b3a8adf3b66e56bc14f61e8130)
++++ LeetCode/src/高频面试题/leetcode/_3LongestSubstringWithoutRepeatingCharacters.java	(date 1612542090297)
+@@ -1,9 +1,8 @@
+-package leetcode;
++package 高频面试题.leetcode;
+ 
+ import java.util.HashMap;
+-import java.util.HashSet;
+ 
+-public class LongestSubstringWithoutRepeatingCharacters {
++public class _3LongestSubstringWithoutRepeatingCharacters {
+     /**
+ 
+      Given a string, find the length of the longest substring without repeating characters.
+@@ -48,41 +47,5 @@
+         return res;
+     }
+ 
+-    /**
+-     * wrong
+-     * @param s
+-     * @return
+-     */
+-    public int lengthOfLongestSubstring2(String s) {
+-        if (s == null || s.length() == 0) {
+-            return 0;
+-        }
+-        HashSet<Character> set = new HashSet<>();
+-        int res = 0;
+-
+-        for (int i = 0, j = 0; i < s.length(); i ++) {
+ 
+-            //if (set.contains(s.charAt(i))) {
+-            //    set.remove(s.charAt(j ++));
+-            //} else {
+-            //    set.add(s.charAt(i));
+-            //    res = Math.max(res, set.size());
+-            //}
+-
+-            if (set.contains(s.charAt(i))) {
+-                j = i;
+-                j ++;
+-            } else {
+-                set.add(s.charAt(i));
+-                res = Math.max(res, set.size());
+-            }
+-        }
+-        return res;
+-    }
+-
+-    public static void main(String[] args) {
+-        LongestSubstringWithoutRepeatingCharacters longestSubstringWithoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();
+-        int aab = longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring2("aab");
+-        System.out.println(aab);
+-    }
+ }
+Index: LeetCode/src/高频面试题/leetcode/_88合并两个有序数组.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/leetcode/_88合并两个有序数组.java	(date 1612549460325)
++++ LeetCode/src/高频面试题/leetcode/_88合并两个有序数组.java	(date 1612549460325)
+@@ -0,0 +1,24 @@
++package 高频面试题.leetcode;
++
++public class _88合并两个有序数组 {
++    class Solution {
++        public void merge(int[] nums1, int m, int[] nums2, int n) {
++            int p1 = m - 1, p2 = n - 1;
++            int tail = m + n - 1;
++            int cur;
++            while (p1 >= 0 || p2 >= 0) {
++                if (p1 == -1) {
++                    cur = nums2[p2--];
++                } else if (p2 == -1) {
++                    cur = nums1[p1--];
++                } else if (nums1[p1] > nums2[p2]) {
++                    cur = nums1[p1--];
++                } else {
++                    cur = nums2[p2--];
++                }
++                nums1[tail--] = cur;
++            }
++        }
++    }
++
++}
+Index: LeetCode/src/leetcode/tree/BinaryTreePreorderTraversal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package leetcode.tree;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Stack;\r\n\r\npublic class BinaryTreePreorderTraversal {\r\n\r\n    public List<Integer> preorderTraversal(TreeNode root) {\r\n        List<Integer> ret = new ArrayList<>();\r\n        Stack<TreeNode> stack = new Stack<>();\r\n        stack.push(root);\r\n\r\n        // 模板\r\n        while (!stack.isEmpty()) {\r\n            TreeNode node = stack.pop();\r\n            if (node == null) {\r\n                continue;\r\n            }\r\n            ret.add(node.val);\r\n\r\n            // 先右后左\r\n            // 保证左子树在前\r\n            stack.push(node.right);\r\n            stack.push(node.left);\r\n        }\r\n        return ret;\r\n    }\r\n}\r\n\r\n
+===================================================================
+--- LeetCode/src/leetcode/tree/BinaryTreePreorderTraversal.java	(revision 3e8c68b18bdcc5b3a8adf3b66e56bc14f61e8130)
++++ LeetCode/src/leetcode/tree/遍历/BinaryTreePreorderTraversal.java	(date 1612430161854)
+@@ -1,4 +1,6 @@
+-package leetcode.tree;
++package leetcode.tree.遍历;
++
++import leetcode.tree.TreeNode;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+Index: LeetCode/src/高频面试题/leetcode/_215数组中的第K个最大元素.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/leetcode/_215数组中的第K个最大元素.java	(date 1612542090289)
++++ LeetCode/src/高频面试题/leetcode/_215数组中的第K个最大元素.java	(date 1612542090289)
+@@ -0,0 +1,34 @@
++package 高频面试题.leetcode;
++
++public class _215数组中的第K个最大元素 {
++    public int findKthLargest(int[] nums, int k) {
++        return kQuickSort(nums, 0, nums.length - 1, nums.length + 1 - k);
++    }
++
++    private int kQuickSort(int[] nums, int l, int r, int k) {
++        if (l == r) {
++            return nums[l];
++        }
++        int i = l - 1, j = r + 1, x = nums[(l + r) >> 1];
++        while (i < j) {
++            while (nums[++i] < x);
++            while (nums[--j] > x);
++            if (i < j) {
++                swap(nums, i,j);
++            }
++        }
++        int leftSize = j - l + 1;
++        if (k <= leftSize) {
++            return kQuickSort(nums, l, j, k);
++        } else {
++            return kQuickSort(nums, j + 1, r, k - leftSize);
++        }
++
++    }
++
++    private void swap(int[] nums, int i, int j) {
++        int t = nums[i];
++        nums[i] = nums[j];
++        nums[j] = t;
++    }
++}
+Index: LeetCode/src/高频面试题/牛客/判断回文.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/牛客/判断回文.java	(date 1612587960090)
++++ LeetCode/src/高频面试题/牛客/判断回文.java	(date 1612587960090)
+@@ -0,0 +1,4 @@
++package 高频面试题.牛客;
++
++public class 判断回文 {
++}
+Index: LeetCode/src/高频面试题/牛客/合并有序链表.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/牛客/合并有序链表.java	(date 1612547859813)
++++ LeetCode/src/高频面试题/牛客/合并有序链表.java	(date 1612547859813)
+@@ -0,0 +1,23 @@
++package 高频面试题.牛客;
++
++import other.ListNode;
++
++public class 合并有序链表 {
++    public ListNode mergeTwoLists (ListNode l1, ListNode l2) {
++        // write code here
++        if (l1 == null) {
++            return l2;
++        }
++        if (l2 == null) {
++            return l1;
++        }
++        if (l1.val <= l2.val) {
++            l1.next = mergeTwoLists(l1.next, l2);
++            return l1;
++        } else {
++            l2.next = mergeTwoLists(l1, l2.next);
++            return l2;
++        }
++
++    }
++}
+Index: LeetCode/src/高频面试题/leetcode/_21合并两个有序链表.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/leetcode/_21合并两个有序链表.java	(date 1612587572218)
++++ LeetCode/src/高频面试题/leetcode/_21合并两个有序链表.java	(date 1612587572218)
+@@ -0,0 +1,24 @@
++package 高频面试题.leetcode;
++
++import leetcode.ListNode;
++
++public class _21合并两个有序链表 {
++    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
++        if (l1 == null) {
++            return l2;
++        }
++
++        if (l2 == null) {
++            return l1;
++        }
++
++        if (l1.val <= l2.val) {
++            l1.next =mergeTwoLists(l1.next, l2);
++            return l1;
++        } else {
++            l2.next = mergeTwoLists(l2.next, l1);
++            return l2;
++        }
++
++    }
++}
+Index: LeetCode/src/高频面试题/leetcode/_1两数之和.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/leetcode/_1两数之和.java	(date 1612587362895)
++++ LeetCode/src/高频面试题/leetcode/_1两数之和.java	(date 1612587362895)
+@@ -0,0 +1,18 @@
++package 高频面试题.leetcode;
++
++import java.util.HashMap;
++import java.util.Map;
++
++public class _1两数之和 {
++    public int[] twoSum(int[] nums, int target) {
++        Map<Integer, Integer> map = new HashMap<>();
++        for (int i = 0; i < nums.length; i++) {
++            if (map.containsKey(target - nums[i])) {
++                return new int[]{map.get(target - nums[i]), i};
++            } else {
++                map.put(nums[i],i);
++            }
++        }
++        return new int[]{};
++    }
++}
+Index: LeetCode/src/DeadLock.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/DeadLock.java	(date 1612538642325)
++++ LeetCode/src/DeadLock.java	(date 1612538642325)
+@@ -0,0 +1,46 @@
++public class DeadLock implements Runnable {
++    public int flag = 1;//静态对象是类的所有对象共享的
++    private static Object o1 = new Object(), o2 = new Object();
++    @Override
++    public void run() {
++        System.out.println("flag=" + flag);
++        if (flag == 1) {
++            synchronized (o1) {
++                try {
++                    Thread.sleep(500);
++                } catch (Exception e) {
++                    e.printStackTrace();
++                }
++                synchronized (o2) {
++                    System.out.println("1");
++                }
++            }
++        }
++        if (flag == 0) {
++            synchronized (o2) {
++                try {
++                    Thread.sleep(500);
++                } catch (Exception e) {
++                    e.printStackTrace();
++                }
++                synchronized (o1) {
++                    System.out.println("0");
++                }
++            }
++        }
++
++    }
++
++    public static void main(String[] args) {
++
++        DeadLock td1 = new DeadLock();
++        DeadLock td2 = new DeadLock();
++        td1.flag = 1;
++        td2.flag = 0;
++
++        //td1,td2都处于可执行状态，但JVM线程调度先执行哪个线程是不确定的。
++        //td2的run()可能在td1的run()之前运行
++        new Thread(td1).start();
++        new Thread(td2).start();
++    }
++}
+\ No newline at end of file
+Index: LeetCode/src/leetcode/BinaryTreePostorderTraversal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package leetcode;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Collections;\r\nimport java.util.List;\r\nimport java.util.Stack;\r\n\r\npublic class BinaryTreePostorderTraversal {\r\n    /**\r\n     * https://leetcode.com/problems/binary-tree-postorder-traversal/description/\r\n     * 145. Binary Tree Postorder Traversal\r\n     * left - right - root\r\n     * root - right - left\r\n     * 前序遍历的变形 然后反转\r\n     * @param root\r\n     * @return\r\n     */\r\n    public List<Integer> postorderTraversal(TreeNode root) {\r\n        List<Integer> ret = new ArrayList<>();\r\n        Stack<TreeNode> stack = new Stack<>();\r\n        stack.add(root);\r\n        while (!stack.isEmpty()) {\r\n            TreeNode node = stack.pop();\r\n            if (node == null) {\r\n                continue;\r\n            }\r\n            ret.add(node.val);\r\n            stack.push(node.left);\r\n            stack.push(node.right);\r\n        }\r\n        Collections.reverse(ret);\r\n        return ret;\r\n    }\r\n}\r\n
+===================================================================
+--- LeetCode/src/leetcode/BinaryTreePostorderTraversal.java	(revision 3e8c68b18bdcc5b3a8adf3b66e56bc14f61e8130)
++++ LeetCode/src/leetcode/tree/遍历/BinaryTreePostorderTraversal.java	(date 1612455331742)
+@@ -1,4 +1,6 @@
+-package leetcode;
++package leetcode.tree.遍历;
++
++
+ 
+ import java.util.ArrayList;
+ import java.util.Collections;
+Index: LeetCode/src/高频面试题/牛客/两数之和.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/牛客/两数之和.java	(date 1612548702197)
++++ LeetCode/src/高频面试题/牛客/两数之和.java	(date 1612548702197)
+@@ -0,0 +1,19 @@
++package 高频面试题.牛客;
++
++import java.util.HashMap;
++
++public class 两数之和 {
++    // 数字从1开始
++    public int[] twoSum (int[] numbers, int target) {
++        // write code here
++        HashMap<Integer, Integer> map = new HashMap<>();
++        for (int i = 0; i < numbers.length; i++) {
++            if (map.containsKey(target - numbers[i])) {
++                return new int[] {map.get(target-numbers[i]) + 1,i +1 };
++            } else {
++                map.put(numbers[i],i);
++            }
++        }
++        return null;
++    }
++}
+Index: LeetCode/src/高频面试题/牛客/最小的K个数.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/牛客/最小的K个数.java	(date 1612547554972)
++++ LeetCode/src/高频面试题/牛客/最小的K个数.java	(date 1612547554972)
+@@ -0,0 +1,39 @@
++package 高频面试题.牛客;
++
++import java.util.ArrayList;
++
++public class 最小的K个数 {
++    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
++        ArrayList<Integer> ret = new ArrayList<>();
++        if (k > input.length || k <= 0) {
++            return ret;
++        }
++        kQuickSort(input, 0, input.length - 1, k);
++        for (int i = 0; i < k; i++) {
++            ret.add(input[i]);
++        }
++        return ret;
++    }
++    private int kQuickSort(int[] q, int l, int r, int k) {
++        if (l == r) return q[l];
++        int x = q[(l + r )>> 1] , i = l - 1, j = r + 1;
++        while (i < j) {
++            while (q[++i] < x);
++            while (q[--j] > x);
++            if (i < j) {
++                swap(q,i,j);
++            }
++        }
++        int leftSize = j - l + 1;
++        if (k <= leftSize) {
++            return kQuickSort(q, l, j ,k);
++        } else {
++            return kQuickSort(q, j + 1, r, k);
++        }
++    }
++    private void swap(int[] q, int i, int j) {
++        int t = q[i];
++        q[i] = q[j];
++        q[j] = t;
++    }
++}
+Index: LeetCode/src/高频面试题/leetcode/_141环形链表.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/leetcode/_141环形链表.java	(date 1612544758572)
++++ LeetCode/src/高频面试题/leetcode/_141环形链表.java	(date 1612544758572)
+@@ -0,0 +1,24 @@
++package 高频面试题.leetcode;
++
++import leetcode.ListNode;
++
++public class _141环形链表 {
++    public class Solution {
++        public boolean hasCycle(ListNode head) {
++            if (head == null || head.next == null) {
++                return false;
++            }
++            ListNode slow = head;
++            ListNode fast = head.next;
++            while (slow != fast) {
++                if (fast == null || fast.next == null) {
++                    return false;
++                }
++                slow = slow.next;
++                fast = fast.next.next;
++            }
++            return true;
++        }
++    }
++
++}
+Index: LeetCode/src/高频面试题/leetcode/_105从前序与中序遍历序列构造二叉树.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/leetcode/_105从前序与中序遍历序列构造二叉树.java	(date 1612546833823)
++++ LeetCode/src/高频面试题/leetcode/_105从前序与中序遍历序列构造二叉树.java	(date 1612546833823)
+@@ -0,0 +1,25 @@
++package 高频面试题.leetcode;
++
++import leetcode.TreeNode;
++
++import java.util.HashMap;
++import java.util.Map;
++
++public class _105从前序与中序遍历序列构造二叉树 {
++    Map<Integer, Integer> map = new HashMap<>();
++    public TreeNode buildTree(int[] preorder, int[] inorder) {
++        for (int i = 0; i < inorder.length; i++) {
++            map.put(inorder[i], i);
++        }
++        return buildTree(preorder, 0, preorder.length - 1, 0);
++    }
++    private TreeNode buildTree(int[] preorder, int preL, int preR, int inL) {
++        if (preL > preR) return null;
++        TreeNode root = new TreeNode(preorder[preL]);
++        Integer inIndex = map.get(root.val);
++        int leftSize = inIndex - inL;
++        root.left = buildTree(preorder, preL + 1, preL + leftSize, inL);
++        root.right = buildTree(preorder, preL + leftSize + 1, preR, inIndex + 1);
++        return root;
++    }
++}
+Index: LeetCode/src/leetcode/tree/BinaryTreeInorderTraversal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package leetcode.tree;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Stack;\r\n\r\npublic class BinaryTreeInorderTraversal {\r\n    public List<Integer> inorderTraversal(TreeNode root) {\r\n        List<Integer> ret = new ArrayList<>();\r\n        if (root == null) {\r\n            return ret;\r\n        }\r\n\r\n        Stack<TreeNode> stack = new Stack<>();\r\n        TreeNode cur = root;\r\n\r\n        while (cur != null || !stack.isEmpty()) {\r\n            // 处理左子树的过程\r\n            while (cur != null) {\r\n                stack.push(cur);\r\n                cur = cur.left;\r\n            }\r\n            // 到底了\r\n            TreeNode node = stack.pop();\r\n            ret.add(node.val);\r\n            // 处理完左子树\r\n            // 处理右子树\r\n            cur = node.right;\r\n        }\r\n        return ret;\r\n    }\r\n}\r\n
+===================================================================
+--- LeetCode/src/leetcode/tree/BinaryTreeInorderTraversal.java	(revision 3e8c68b18bdcc5b3a8adf3b66e56bc14f61e8130)
++++ LeetCode/src/leetcode/tree/遍历/BinaryTreeInorderTraversal.java	(date 1612455331724)
+@@ -1,4 +1,6 @@
+-package leetcode.tree;
++package leetcode.tree.遍历;
++
++import leetcode.tree.TreeNode;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -6,7 +8,7 @@
+ 
+ public class BinaryTreeInorderTraversal {
+     public List<Integer> inorderTraversal(TreeNode root) {
+-        List<Integer> ret = new ArrayList<>();
++        ArrayList<Integer> ret = new ArrayList<>();
+         if (root == null) {
+             return ret;
+         }
+Index: LeetCode/src/TreeNode.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/TreeNode.java	(date 1612546833812)
++++ LeetCode/src/TreeNode.java	(date 1612546833812)
+@@ -0,0 +1,10 @@
++/**
++ * Definition for a binary tree node.
++ */
++
++public class TreeNode {
++    public int val;
++    public TreeNode left;
++    public TreeNode right;
++    public TreeNode(int x) { val = x; }
++}
+Index: LeetCode/src/高频面试题/leetcode/_146LRU缓存机制.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/leetcode/_146LRU缓存机制.java	(date 1612544073731)
++++ LeetCode/src/高频面试题/leetcode/_146LRU缓存机制.java	(date 1612544073731)
+@@ -0,0 +1,97 @@
++package 高频面试题.leetcode;
++
++import java.util.HashMap;
++import java.util.Map;
++
++public class _146LRU缓存机制 {
++    public class LRUCache {
++        class DLinkedNode {
++            int key;
++            int value;
++            DLinkedNode prev;
++            DLinkedNode next;
++            public DLinkedNode() {
++
++            }
++            public DLinkedNode(int key, int value) {
++                this.key = key;
++                this.value = value;
++            }
++        }
++
++        private Map<Integer, DLinkedNode> cache = new HashMap<Integer, DLinkedNode>();
++        private int size;
++        private int capacity;
++        private DLinkedNode head, tail;
++
++        public LRUCache(int capacity) {
++            this.size = 0;
++            this.capacity = capacity;
++            // 使用伪头部和伪尾部节点
++            head = new DLinkedNode();
++            tail = new DLinkedNode();
++            head.next = tail;
++            tail.prev = head;
++        }
++
++        public int get(int key) {
++            DLinkedNode node = cache.get(key);
++            if (node == null) {
++                return -1;
++            }
++            // 如果 key 存在，先通过哈希表定位，再移到头部
++            moveToHead(node);
++            return node.value;
++        }
++
++        public void put(int key, int value) {
++            DLinkedNode node = cache.get(key);
++            if (node == null) {
++                // 如果 key 不存在，创建一个新的节点
++                DLinkedNode newNode = new DLinkedNode(key, value);
++                // 添加进哈希表
++                cache.put(key, newNode);
++                // 添加至双向链表的头部
++                addToHead(newNode);
++                ++size;
++                if (size > capacity) {
++                    // 如果超出容量，删除双向链表的尾部节点
++                    DLinkedNode tail = removeTail();
++                    // 删除哈希表中对应的项
++                    cache.remove(tail.key);
++                    --size;
++                }
++            }
++            else {
++                // 如果 key 存在，先通过哈希表定位，再修改 value，并移到头部
++                node.value = value;
++                moveToHead(node);
++            }
++        }
++
++        private void addToHead(DLinkedNode node) {
++            node.prev = head;
++            node.next = head.next;
++            head.next.prev = node;
++            head.next = node;
++        }
++
++        private void removeNode(DLinkedNode node) {
++            node.prev.next = node.next;
++            node.next.prev = node.prev;
++        }
++
++        private void moveToHead(DLinkedNode node) {
++            removeNode(node);
++            addToHead(node);
++        }
++
++        private DLinkedNode removeTail() {
++            DLinkedNode res = tail.prev;
++            removeNode(res);
++            return res;
++        }
++    }
++
++
++}
+Index: LeetCode/src/ListNode.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/ListNode.java	(date 1612512751055)
++++ LeetCode/src/ListNode.java	(date 1612512751055)
+@@ -0,0 +1,5 @@
++public class ListNode {
++      public ListNode next;
++      public int val;
++   public ListNode(int val) { this.val = val; }
++  }
+\ No newline at end of file
+Index: LeetCode/src/leetcode/linkedList/ListNode.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/leetcode/linkedList/ListNode.java	(date 1612456073319)
++++ LeetCode/src/leetcode/linkedList/ListNode.java	(date 1612456073319)
+@@ -0,0 +1,7 @@
++package leetcode.linkedList;
++
++  public class ListNode {
++      public ListNode next;
++      public int val;
++   public ListNode(int val) { this.val = val; }
++  }
+\ No newline at end of file
+Index: LeetCode/src/leetcode/KthLargestElementinanArray.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package leetcode;\r\n\r\nimport java.util.Arrays;\r\nimport java.util.PriorityQueue;\r\n\r\npublic class KthLargestElementinanArray {\r\n    /**\r\n     * 215. Kth Largest Element in an Array\r\n     * https://leetcode.com/problems/kth-largest-element-in-an-array/description/\r\n     * 找出倒数第k个数\r\n     * 如果用小顶堆的话 去掉前k-1个数 就行了\r\n     * @param nums\r\n     * @param k\r\n     * @return\r\n     */\r\n    public int findKthLargest(int[] nums, int k) {\r\n        // 小顶堆? 堆相关知识 得补一下\r\n        PriorityQueue<Integer> pq = new PriorityQueue<>();\r\n        for (int val : nums) {\r\n            pq.add(val);\r\n            if (pq.size() > k) {\r\n                // 最小的出列\r\n                pq.poll();\r\n            }\r\n        }\r\n        return pq.peek();\r\n    }\r\n\r\n    public int findKthLargest2(int[] nums, int k) {\r\n        // 先排序\r\n        Arrays.sort(nums);\r\n        return nums[nums.length - k];\r\n    }\r\n\r\n    // 快排依旧不熟\r\n    public int findKthLargest3(int[] nums, int k) {\r\n       k = nums.length - k;\r\n       int l = 0, h = nums.length - 1;\r\n       while (l < h) {\r\n           int j = partition(nums, l, h);\r\n           if (j == k) {\r\n               break;\r\n           } else if (j < k) {\r\n               l = j + 1;\r\n           } else {\r\n               h = j - 1;\r\n           }\r\n       }\r\n       return nums[k];\r\n    }\r\n\r\n    private int partition(int[] a, int l, int h) {\r\n        int i = l, j = h + 1;\r\n        while (true) {\r\n            while (a[++i] < a[l] && i < h) ;\r\n            while (a[--j] > a[l] && j > l);\r\n            if (i >= j) {\r\n                break;\r\n            }\r\n            swap(a, i, j);\r\n        }\r\n        swap(a, l, j);\r\n        return j;\r\n    }\r\n\r\n    private void swap(int[] a, int i, int j) {\r\n        int t = a[i];\r\n        a[i] = a[j];\r\n        a[j] = t;\r\n    }\r\n}\r\n
+===================================================================
+--- LeetCode/src/leetcode/KthLargestElementinanArray.java	(revision 3e8c68b18bdcc5b3a8adf3b66e56bc14f61e8130)
++++ LeetCode/src/leetcode/sort/KthLargestElementinanArray.java	(date 1612504481359)
+@@ -1,4 +1,4 @@
+-package leetcode;
++package leetcode.sort;
+ 
+ import java.util.Arrays;
+ import java.util.PriorityQueue;
+Index: LeetCode/src/高频面试题/leetcode/_206反转链表.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/高频面试题/leetcode/_206反转链表.java	(date 1612542090281)
++++ LeetCode/src/高频面试题/leetcode/_206反转链表.java	(date 1612542090281)
+@@ -0,0 +1,16 @@
++package 高频面试题.leetcode;
++
++import leetcode.ListNode;
++
++public class _206反转链表 {
++    public ListNode reverseList(ListNode head) {
++        ListNode pre = null, next = null, cur = head;
++        while (cur != null) {
++            next = head.next;
++            head.next = pre;
++            pre = head;
++            head = next;
++        }
++        return pre;
++    }
++}
+Index: LeetCode/src/other/最小的K个数.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package other;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.PriorityQueue;\r\n\r\npublic class 最小的K个数 {\r\n    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {\r\n        ArrayList<Integer> ret = new ArrayList<>();\r\n        if (k > input.length || k <= 0) {\r\n            return ret;\r\n        }\r\n        findKthSmallest(input, k - 1);\r\n        /* findKthSmallest 会改变数组，使得前 k 个数都是最小的 k 个数 */\r\n        for (int i = 0; i < k; i++) {\r\n            ret.add(input[i]);\r\n        }\r\n        return ret;\r\n    }\r\n\r\n    /***\r\n     * 目标就是找到第k大的元素\r\n     * 快速排序的 partition () 方法，会返回一个整数 j 使得 a [l..j-1] 小于等于 a [j]，且 a [j+1..h] 大于等于 a [j]，\r\n     * 此时 a [j] 就是数组的第 j 大元素。\r\n     * 可以利用这个特性找出数组的第 K 个元素，这种找第 K 个元素的算法称为快速选择算法。\r\n     * @param nums\r\n     * @param k\r\n     */\r\n    private void findKthSmallest(int[] nums, int k) {\r\n        int l = 0, h = nums.length - 1;\r\n        while (l < h) {\r\n            int j = partition(nums, l, h);\r\n            if (j == k) {\r\n                break;\r\n            }\r\n            // 不需要管比k的大的那部分了\r\n            // 所以j - 1\r\n            if (j > k) {\r\n                h = j - 1;\r\n            } else {\r\n                // 不需要管比k的小的那部分了\r\n                // 所以j + 1\r\n                l = j + 1;\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * 快排基础\r\n     * 取 a [l] 作为切分元素，然后从数组的左端向右扫描直到找到第一个大于等于它的元素，\r\n     * 再从数组的右端向左扫描找到第一个小于它的元素，交换这两个元素。\r\n     * 不断进行这个过程，就可以保证左指针 i 的左侧元素都不大于切分元素，右指针 j 的右侧元素都不小于切分元素。\r\n     * 当两个指针相遇时，将切分元素 a [l] 和 a [j] 交换位置。\r\n     * @param nums\r\n     * @param l\r\n     * @param h\r\n     * @return\r\n     */\r\n    private int partition(int[] nums, int l, int h) {\r\n        int p = nums[l];\r\n        int i = l, j = h + 1;\r\n        while (true) {\r\n            while (i != h && nums[++i] < p) {\r\n                ;\r\n            }\r\n            while (j != l && nums[--j] > p) {\r\n                ;\r\n            }\r\n            // 可以退出循环了\r\n            if (i >= j) {\r\n                break;\r\n            }\r\n            swap(nums, i, j);\r\n        }\r\n        swap(nums, l, j);\r\n        return j;\r\n    }\r\n\r\n    private void swap(int[] nums, int i, int j) {\r\n        int t = nums[i];\r\n        nums[i] = nums[j];\r\n        nums[j] = t;\r\n    }\r\n\r\n    /**\r\n     * 复杂度：O (NlogK) + O (K)\r\n     * 特别适合处理海量数据\r\n     *\r\n     * 应该使用大顶堆来维护最小堆，而不能直接创建一个小顶堆并设置一个大小，企图让小顶堆中的元素都是最小元素。\r\n     *\r\n     * 维护一个大小为 K 的最小堆过程如下：在添加一个元素之后，如果大顶堆的大小大于 K，那么需要将大顶堆的堆顶元素去除。\r\n     * @param input\r\n     * @param k\r\n     * @return\r\n     */\r\n    public ArrayList<Integer> GetLeastNumbers_Solution2(int [] input, int k) {\r\n        if (k > input.length || k <= 0) {\r\n            return new ArrayList<>();\r\n        }\r\n        PriorityQueue<Integer> maxHeap =\r\n                new PriorityQueue<>((o1, o2) -> o2 - o1);\r\n        for (int num : input) {\r\n            maxHeap.add(num);\r\n            if (maxHeap.size() > k) {\r\n                maxHeap.poll();\r\n            }\r\n        }\r\n        return new ArrayList<>(maxHeap);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/other/最小的K个数.java	(revision 3e8c68b18bdcc5b3a8adf3b66e56bc14f61e8130)
++++ LeetCode/src/other/最小的K个数.java	(date 1612510899551)
+@@ -75,11 +75,7 @@
+         return j;
+     }
+ 
+-    private void swap(int[] nums, int i, int j) {
+-        int t = nums[i];
+-        nums[i] = nums[j];
+-        nums[j] = t;
+-    }
++
+ 
+     /**
+      * 复杂度：O (NlogK) + O (K)
+@@ -106,4 +102,63 @@
+         }
+         return new ArrayList<>(maxHeap);
+     }
++    public ArrayList<Integer> GetLeastNumbers_Solution3(int [] input, int k) {
++        ArrayList<Integer> ret = new ArrayList<>();
++        if (k > input.length || k <= 0) {
++            return ret;
++        }
++        findKthSmallest1(input,0,input.length - 1, k);
++        /* findKthSmallest 会改变数组，使得前 k 个数都是最小的 k 个数 */
++        for (int i = 0; i < k; i++) {
++            ret.add(input[i]);
++        }
++        return ret;
++    }
++
++    private int findKthSmallest1(int[] input, int l, int r, int k) {
++        if (l == r) return input[l];
++        int x = input[(l + r) >> 1], i = l - 1, j = r + 1;
++        while (i < j) {
++            while (input[++i] < x);
++            while (input[--j] > x);
++            if (i < j) {
++                swap(input, i, j);
++            }
++        }
++        int leftSize = j - l + 1;
++        if (k <= leftSize) {
++            return findKthSmallest1(input, l, j, k);
++        } else {
++            return findKthSmallest1(input, j + 1, r, k - leftSize);
++        }
++    }
++
++
++
++    public int findKthLargest(int[] nums, int k) {
++        return k_quick_sort(nums, 0, nums.length - 1,nums.length - k + 1);
++
++    }
++    private int k_quick_sort(int[] nums, int l , int r, int k) {
++        if(l == r) return nums[l];
++        int i = l - 1, j = r + 1, x = nums[(l + r) >> 1];
++        while (i < j) {
++            while (nums[++i] < x);
++            while (nums[--j] > x);
++            if (i < j) {
++                swap(nums,i,j);
++            }
++        }
++        int leftSize = j - l + 1;
++        if (k <= leftSize) {
++            return k_quick_sort(nums, l, j, k);
++        } else {
++            return k_quick_sort(nums, j + 1, r, k - leftSize);
++        }
++    }
++    private void swap(int[] nums, int i, int j) {
++        int t = nums[i];
++        nums[i] = nums[j];
++        nums[j] = t;
++    }
+ }
+Index: LeetCode/src/leetcode/linkedList/ReverseNodesinkGroup.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/leetcode/linkedList/ReverseNodesinkGroup.java	(date 1612458371806)
++++ LeetCode/src/leetcode/linkedList/ReverseNodesinkGroup.java	(date 1612458371806)
+@@ -0,0 +1,82 @@
++package leetcode.linkedList;
++
++public class ReverseNodesinkGroup {
++    /**
++     * Definition for singly-linked list.
++     * public class ListNode {
++     * int val;
++     * ListNode next;
++     * ListNode(int x) { val = x; }
++     * }
++     */
++    class Solution {
++        public ListNode reverseKGroup(ListNode head, int k) {
++            if (head == null || head.next == null) {
++                return head;
++            }
++            //定义一个假的节点。
++            ListNode dummy = new ListNode(0);
++            //假节点的next指向head。
++            // dummy->1->2->3->4->5
++            dummy.next = head;
++            //初始化pre和end都指向dummy。pre指每次要翻转的链表的头结点的上一个节点。end指每次要翻转的链表的尾节点
++            ListNode pre = dummy;
++            ListNode end = dummy;
++
++            while (end.next != null) {
++                //循环k次，找到需要翻转的链表的结尾,这里每次循环要判断end是否等于空,因为如果为空，end.next会报空指针异常。
++                //dummy->1->2->3->4->5 若k为2，循环2次，end指向2
++                for (int i = 0; i < k && end != null; i++) {
++                    end = end.next;
++                }
++                //如果end==null，即需要翻转的链表的节点数小于k，不执行翻转。
++                if (end == null) {
++                    break;
++                }
++                //先记录下end.next,方便后面链接链表
++                ListNode next = end.next;
++                //然后断开链表
++                end.next = null;
++                //记录下要翻转链表的头节点
++                ListNode start = pre.next;
++                //翻转链表,pre.next指向翻转后的链表。1->2 变成2->1。 dummy->2->1
++                pre.next = reverse(start);
++                //翻转后头节点变到最后。通过.next把断开的链表重新链接。
++                start.next = next;
++
++                //将pre换成下次要翻转的链表的头结点的上一个节点。即start
++                pre = start;
++                //翻转结束，将end置为下次要翻转的链表的头结点的上一个节点。即start
++                end = start;
++            }
++            return dummy.next;
++
++
++        }
++
++        //链表翻转
++        // 例子：   head： 1->2->3->4
++        public ListNode reverse(ListNode head) {
++            //单链表为空或只有一个节点，直接返回原单链表
++            if (head == null || head.next == null) {
++                return head;
++            }
++            //前一个节点指针
++            ListNode preNode = null;
++            //当前节点指针
++            ListNode curNode = head;
++            //下一个节点指针
++            ListNode nextNode = null;
++            while (curNode != null) {
++                nextNode = curNode.next;//nextNode 指向下一个节点,保存当前节点后面的链表。
++                curNode.next = preNode;//将当前节点next域指向前一个节点   null<-1<-2<-3<-4
++                preNode = curNode;//preNode 指针向后移动。preNode指向当前节点。
++                curNode = nextNode;//curNode指针向后移动。下一个节点变成当前节点
++            }
++            return preNode;
++
++        }
++
++
++    }
++}
+Index: LeetCode/src/leetcode/tree/遍历/TreeNode.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- LeetCode/src/leetcode/tree/遍历/TreeNode.java	(date 1612455331734)
++++ LeetCode/src/leetcode/tree/遍历/TreeNode.java	(date 1612455331734)
+@@ -0,0 +1,12 @@
++package leetcode.tree.遍历;
++
++/**
++ * Definition for a binary tree node.
++ */
++
++public class TreeNode {
++    public int val;
++    public TreeNode left;
++    public TreeNode right;
++    public TreeNode(int x) { val = x; }
++}
