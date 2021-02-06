@@ -1,4 +1,6 @@
-package leetcode.tree;
+package leetcode.tree.遍历;
+
+import leetcode.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.Stack;
 
 public class BinaryTreeInorderTraversal {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> ret = new ArrayList<>();
+        ArrayList<Integer> ret = new ArrayList<>();
         if (root == null) {
             return ret;
         }

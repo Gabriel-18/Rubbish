@@ -75,11 +75,7 @@ public class 最小的K个数 {
         return j;
     }
 
-    private void swap(int[] nums, int i, int j) {
-        int t = nums[i];
-        nums[i] = nums[j];
-        nums[j] = t;
-    }
+
 
     /**
      * 复杂度：O (NlogK) + O (K)
@@ -105,5 +101,64 @@ public class 最小的K个数 {
             }
         }
         return new ArrayList<>(maxHeap);
+    }
+    public ArrayList<Integer> GetLeastNumbers_Solution3(int [] input, int k) {
+        ArrayList<Integer> ret = new ArrayList<>();
+        if (k > input.length || k <= 0) {
+            return ret;
+        }
+        findKthSmallest1(input,0,input.length - 1, k);
+        /* findKthSmallest 会改变数组，使得前 k 个数都是最小的 k 个数 */
+        for (int i = 0; i < k; i++) {
+            ret.add(input[i]);
+        }
+        return ret;
+    }
+
+    private int findKthSmallest1(int[] input, int l, int r, int k) {
+        if (l == r) return input[l];
+        int x = input[(l + r) >> 1], i = l - 1, j = r + 1;
+        while (i < j) {
+            while (input[++i] < x);
+            while (input[--j] > x);
+            if (i < j) {
+                swap(input, i, j);
+            }
+        }
+        int leftSize = j - l + 1;
+        if (k <= leftSize) {
+            return findKthSmallest1(input, l, j, k);
+        } else {
+            return findKthSmallest1(input, j + 1, r, k - leftSize);
+        }
+    }
+
+
+
+    public int findKthLargest(int[] nums, int k) {
+        return k_quick_sort(nums, 0, nums.length - 1,nums.length - k + 1);
+
+    }
+    private int k_quick_sort(int[] nums, int l , int r, int k) {
+        if(l == r) return nums[l];
+        int i = l - 1, j = r + 1, x = nums[(l + r) >> 1];
+        while (i < j) {
+            while (nums[++i] < x);
+            while (nums[--j] > x);
+            if (i < j) {
+                swap(nums,i,j);
+            }
+        }
+        int leftSize = j - l + 1;
+        if (k <= leftSize) {
+            return k_quick_sort(nums, l, j, k);
+        } else {
+            return k_quick_sort(nums, j + 1, r, k - leftSize);
+        }
+    }
+    private void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
     }
 }

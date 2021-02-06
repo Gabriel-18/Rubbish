@@ -1,4 +1,5 @@
-package leetcode;
+package leetcode.tree.遍历;
+
 /**
  * Definition for a binary tree node.
  */

@@ -1,9 +1,8 @@
-package leetcode;
+package 高频面试题.leetcode;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
-public class LongestSubstringWithoutRepeatingCharacters {
+public class _3LongestSubstringWithoutRepeatingCharacters {
     /**
 
      Given a string, find the length of the longest substring without repeating characters.
@@ -48,41 +47,5 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return res;
     }
 
-    /**
-     * wrong
-     * @param s
-     * @return
-     */
-    public int lengthOfLongestSubstring2(String s) {
-        if (s == null || s.length() == 0) {
-            return 0;
-        }
-        HashSet<Character> set = new HashSet<>();
-        int res = 0;
 
-        for (int i = 0, j = 0; i < s.length(); i ++) {
-
-            //if (set.contains(s.charAt(i))) {
-            //    set.remove(s.charAt(j ++));
-            //} else {
-            //    set.add(s.charAt(i));
-            //    res = Math.max(res, set.size());
-            //}
-
-            if (set.contains(s.charAt(i))) {
-                j = i;
-                j ++;
-            } else {
-                set.add(s.charAt(i));
-                res = Math.max(res, set.size());
-            }
-        }
-        return res;
-    }
-
-    public static void main(String[] args) {
-        LongestSubstringWithoutRepeatingCharacters longestSubstringWithoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();
-        int aab = longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring2("aab");
-        System.out.println(aab);
-    }
 }
