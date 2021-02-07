@@ -1,6 +1,6 @@
 package 高频面试题.牛客;
 
-import other.ListNode;
+import 剑指offer.ListNode;
 
 public class 合并有序链表 {
     public ListNode mergeTwoLists (ListNode l1, ListNode l2) {

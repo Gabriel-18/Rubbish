@@ -1,16 +1,8 @@
-package leetcode;
+package 高频面试题.leetcode;
 
-public class ReverseLinkedListII {
-    /**
-     * https://leetcode.com/problems/reverse-linked-list-ii/
-     * 92. Reverse Linked List II
-     * time: O(N)
-     * space: O(1)
-     * @param head
-     * @param m
-     * @param n
-     * @return
-     */
+import leetcode.ListNode;
+
+public class _92反转链表II {
     public ListNode reverseBetween(ListNode head, int m, int n) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
