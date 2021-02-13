@@ -1,18 +1,10 @@
 package 剑指offer.linkedList;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class 从尾到头打印链表 {
-    @Test
-    public void test() {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        printListFromTailToHead(head);
-    }
+
     // 递归
     // debug理解这个递归过程
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {

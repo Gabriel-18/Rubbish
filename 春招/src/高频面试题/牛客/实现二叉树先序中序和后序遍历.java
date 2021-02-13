@@ -8,10 +8,10 @@ public class 实现二叉树先序中序和后序遍历 {
 
 
     /*
-     * public class TreeNode {
+     * public class leetcode.TreeNode {
      *   int val = 0;
-     *   TreeNode left = null;
-     *   TreeNode right = null;
+     *   leetcode.TreeNode left = null;
+     *   leetcode.TreeNode right = null;
      * }
      */
 

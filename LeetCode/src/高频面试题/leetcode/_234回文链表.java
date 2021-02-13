@@ -28,6 +28,8 @@ public class _234回文链表 {
 
     // 反转
     // 自然就断开了
+    // 到底断开没有？
+    // 这里可以不断开
     private ListNode reverse(ListNode head) {
         ListNode pre = null;
         while (head != null) {

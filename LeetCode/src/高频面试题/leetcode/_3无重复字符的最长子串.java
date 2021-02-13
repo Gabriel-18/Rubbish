@@ -29,6 +29,8 @@ public class _3无重复字符的最长子串 {
                 char alpha = s.charAt(end);
                 if (map.containsKey(alpha)) {
                     // 更新start
+                    // 不是第一次出现
+                    // 大的更新
                     start = Math.max(map.get(alpha) + 1, start);
                 }
 

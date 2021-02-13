@@ -21,9 +21,14 @@ public class 链表中环的入口结点 {
         }
         ListNode slow = pHead, fast = pHead;
 
+        // 为什么呢
         fast = fast.next.next;
         slow = slow.next;
         while (slow != fast) {
+            // 没环的条件
+            if (fast == null && fast.next == null) {
+                return null;
+            }
             fast = fast.next.next;
             slow = slow.next;
         }

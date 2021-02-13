@@ -1,0 +1,7 @@
+package 高频面试题.leetcode;
+
+public class ListNode {
+      public ListNode next;
+      public int val;
+   public ListNode(int val) { this.val = val; }
+  }

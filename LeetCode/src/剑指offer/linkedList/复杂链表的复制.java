@@ -37,6 +37,9 @@ public class 复杂链表的复制 {
         }
 
         // 拆分
+        // 这种方法只适合拆开链表
+        // 328那种标记求后的方法比较
+        // 适合拆开又合并的情况
         cur = pHead;
         RandomListNode pCloneHead = pHead.next;
         while (cur.next != null) {

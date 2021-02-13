@@ -1,18 +1,12 @@
 package 剑指offer.dp;
 
-import org.junit.Test;
-
 // 把这个计算拆成两步
 // 第一次只算除开当前数前面的乘积
 // 第二次只计算除开当前数后面的乘积
 // 具体过程可以debug
 public class 构建乘积数组 {
 
-    @Test
-    public void test() {
-        multiply(new int[]{1, 2, 3, 4, 5});
 
-    }
     public int[] multiply(int[] A) {
         int n = A.length;
         int[] B = new int[n];

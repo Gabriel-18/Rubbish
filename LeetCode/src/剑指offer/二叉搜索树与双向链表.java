@@ -20,6 +20,9 @@ public class 二叉搜索树与双向链表 {
     private TreeNode pre = null;
     private TreeNode head = null;
     public TreeNode Convert(TreeNode pRootOfTree) {
+        // 保证首尾相连
+        head.left = pre;
+        pre.right = head;
         inOrder(pRootOfTree);
         return head;
     }
@@ -31,6 +34,9 @@ public class 二叉搜索树与双向链表 {
         // 处理左子树
         inOrder(node.left);
 
+        if (head == null) {
+            head = node;
+        }
         /**
          * 核心代码逻辑
          */
@@ -39,9 +45,7 @@ public class 二叉搜索树与双向链表 {
             pre.right = node;
         }
         pre = node;
-        if (head == null) {
-            head = node;
-        }
+
 
         // 处理右子树
         inOrder(node.right);

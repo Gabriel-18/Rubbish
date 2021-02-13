@@ -1,6 +1,5 @@
 package 高频面试题.leetcode;
 
-import leetcode.ListNode;
 
 public class _21合并两个有序链表 {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
