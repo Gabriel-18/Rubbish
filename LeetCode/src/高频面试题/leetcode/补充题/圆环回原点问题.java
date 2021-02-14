@@ -12,12 +12,14 @@ public class 圆环回原点问题 {
                 dp[i][j] = dp[i - 1][(j - 1 + length) % length] + dp[i - 1][(j + 1) %length];
             }
         }
+        // 0 1 0
+        // 0 9 0
         return dp[n][0];
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++){
-            System.out.println(backToOrigin(i));
+        for (int i = 0; i < 11; i++){
+            System.out.println(i +" "+backToOrigin(i) + " steps");
         }
     }
 
