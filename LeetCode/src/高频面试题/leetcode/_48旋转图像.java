@@ -12,6 +12,7 @@ public class _48旋转图像 {
             }
         }
         // 主对角线翻转
+        // 遍历下三角
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < i; ++j) {
                 int temp = matrix[i][j];
