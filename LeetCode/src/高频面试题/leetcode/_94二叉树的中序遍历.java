@@ -15,6 +15,7 @@ public class _94二叉树的中序遍历 {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
         while (cur != null || !stack.isEmpty()) {
+            // 冲
             while (cur != null) {
                 stack.push(cur);
                 cur = cur.left;
