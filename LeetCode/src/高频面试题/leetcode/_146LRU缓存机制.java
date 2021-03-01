@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class _146LRU缓存机制 {
     public class LRUCache {
+        
         class DLinkedNode {
             int key;
             int value;
@@ -61,8 +62,7 @@ public class _146LRU缓存机制 {
                     cache.remove(tail.key);
                     --size;
                 }
-            }
-            else {
+            } else {
                 // 如果 key 存在，先通过哈希表定位，再修改 value，并移到头部
                 node.value = value;
                 moveToHead(node);
