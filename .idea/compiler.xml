@@ -8,15 +8,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Demo" />
         <module name="Algorithm" />
         <module name="SpringIOC" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="Algorithm" target="1.8" />
-      <module name="database" target="1.8" />
+      <module name="Demo" target="8" />
       <module name="SpringIOC" target="1.5" />
-      <module name="Student_Management_System" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

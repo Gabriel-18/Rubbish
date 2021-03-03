@@ -17,9 +17,13 @@ public class 数组中的逆序对 {
 
         int k = 0, i = l, j = mid + 1;
         while (i <= mid && j <= r) {
-            if(nums[i] <= nums[j]) tmp[k++] = nums[i++];
-            else {
+            if(nums[i] <= nums[j]) {
+                tmp[k++] = nums[i++];
+            } else {
+                // nums[i] > nums[j]
                 tmp[k++] = nums[j++];
+                // 当前左边的元素都大于nums[j]
+                //[l, mid] [mid + 1, r]
                 res += mid - i + 1;
             }
         }
