@@ -52,6 +52,17 @@ public class 从尾到头打印链表 {
         return ret;
     }
 
+    /**
+     * Definition for singly-linked list.
+     * class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode(int x) { val = x; }
+     * }
+     */
+
+
+
 
     /**
      * easy
@@ -91,6 +102,20 @@ public class 从尾到头打印链表 {
     }
 
     public ArrayList<Integer> printListFromTailToHead3(ListNode listNode) {
+//        Stack<Integer> stack = new Stack<>();
+        LinkedList<Integer> stack = new LinkedList<>();
+        while (listNode != null) {
+            stack.add(listNode.val);
+            listNode = listNode.next;
+        }
+        ArrayList<Integer> ret = new ArrayList<>();
+        while (!stack.isEmpty()) {
+            ret.add(stack.pop());
+        }
+        return ret;
+    }
+
+    public ArrayList<Integer> printListFromTailToHead4(ListNode listNode) {
 //        Stack<Integer> stack = new Stack<>();
         LinkedList<Integer> stack = new LinkedList<>();
         while (listNode != null) {

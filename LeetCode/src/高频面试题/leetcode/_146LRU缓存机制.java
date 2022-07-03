@@ -6,58 +6,59 @@ import java.util.Map;
 public class _146LRU缓存机制 {
     public class LRUCache {
         
-        class DLinkedNode {
+        class Node {
             int key;
             int value;
-            DLinkedNode prev;
-            DLinkedNode next;
-            public DLinkedNode() {
+            Node pre;
+            Node next;
+            public Node() {
 
             }
-            public DLinkedNode(int key, int value) {
+            public Node(int key, int value) {
                 this.key = key;
                 this.value = value;
             }
         }
-
-        private Map<Integer, DLinkedNode> cache = new HashMap<Integer, DLinkedNode>();
+        // 模拟Cache
+        private Map<Integer, Node> cache = new HashMap<Integer, Node>();
         private int size;
         private int capacity;
-        private DLinkedNode head, tail;
+        private Node head, tail;
 
         public LRUCache(int capacity) {
             this.size = 0;
             this.capacity = capacity;
             // 使用伪头部和伪尾部节点
-            head = new DLinkedNode();
-            tail = new DLinkedNode();
+            head = new Node();
+            tail = new Node();
+            // 模拟内存
             head.next = tail;
-            tail.prev = head;
+            tail.pre = head;
         }
 
         public int get(int key) {
-            DLinkedNode node = cache.get(key);
-            if (node == null) {
+            Node cur = cache.get(key);
+            if (cur == null) {
                 return -1;
             }
             // 如果 key 存在，先通过哈希表定位，再移到头部
-            moveToHead(node);
-            return node.value;
+            moveToHead(cur);
+            return cur.value;
         }
 
         public void put(int key, int value) {
-            DLinkedNode node = cache.get(key);
+            Node node = cache.get(key);
             if (node == null) {
                 // 如果 key 不存在，创建一个新的节点
-                DLinkedNode newNode = new DLinkedNode(key, value);
+                Node newNode = new Node(key, value);
                 // 添加进哈希表
                 cache.put(key, newNode);
                 // 添加至双向链表的头部
                 addToHead(newNode);
-                ++size;
+                size++;
                 if (size > capacity) {
                     // 如果超出容量，删除双向链表的尾部节点
-                    DLinkedNode tail = removeTail();
+                    Node tail = removeTail();
                     // 删除哈希表中对应的项
                     cache.remove(tail.key);
                     --size;
@@ -69,27 +70,27 @@ public class _146LRU缓存机制 {
             }
         }
 
-        private void addToHead(DLinkedNode node) {
-            node.prev = head;
+        private void addToHead(Node node) {
+            node.pre = head;
             node.next = head.next;
-            head.next.prev = node;
+            head.next.pre = node;
             head.next = node;
         }
 
-        private void removeNode(DLinkedNode node) {
-            node.prev.next = node.next;
-            node.next.prev = node.prev;
+        private void removeNode(Node node) {
+            node.pre.next = node.next;
+            node.next.pre = node.pre;
         }
 
-        private void moveToHead(DLinkedNode node) {
+        private void moveToHead(Node node) {
             removeNode(node);
             addToHead(node);
         }
 
-        private DLinkedNode removeTail() {
-            DLinkedNode res = tail.prev;
-            removeNode(res);
-            return res;
+        private Node removeTail() {
+            Node node = tail.pre;
+            removeNode(node);
+            return node;
         }
     }
 
